@@ -2,7 +2,7 @@
 -- PostgreSQL database dump
 --
 
--- Dumped from database version 9.5.3
+-- Dumped from database version 9.5.0
 -- Dumped by pg_dump version 9.5.3
 
 SET statement_timeout = 0;
@@ -60,48 +60,6 @@ CREATE EXTENSION IF NOT EXISTS plpgsql WITH SCHEMA pg_catalog;
 --
 
 COMMENT ON EXTENSION plpgsql IS 'PL/pgSQL procedural language';
-
-
---
--- Name: hstore; Type: EXTENSION; Schema: -; Owner: -
---
-
-CREATE EXTENSION IF NOT EXISTS hstore WITH SCHEMA public;
-
-
---
--- Name: EXTENSION hstore; Type: COMMENT; Schema: -; Owner: -
---
-
-COMMENT ON EXTENSION hstore IS 'data type for storing sets of (key, value) pairs';
-
-
---
--- Name: pg_trgm; Type: EXTENSION; Schema: -; Owner: -
---
-
-CREATE EXTENSION IF NOT EXISTS pg_trgm WITH SCHEMA public;
-
-
---
--- Name: EXTENSION pg_trgm; Type: COMMENT; Schema: -; Owner: -
---
-
-COMMENT ON EXTENSION pg_trgm IS 'text similarity measurement and index searching based on trigrams';
-
-
-SET search_path = demo, pg_catalog;
-
---
--- Name: simple_jsonb_to_hstore(jsonb); Type: FUNCTION; Schema: demo; Owner: -
---
-
-CREATE FUNCTION simple_jsonb_to_hstore(jdata jsonb) RETURNS public.hstore
-    LANGUAGE sql
-    AS $$
-    select hstore(array_agg(key), array_agg(value))
-    from jsonb_each_text(jdata)
-$$;
 
 
 SET search_path = public, pg_catalog;
@@ -329,24 +287,6 @@ ALTER SEQUENCE contacts_id_seq OWNED BY contacts.id;
 
 
 --
--- Name: histories; Type: TABLE; Schema: biobolsas; Owner: -
---
-
-CREATE TABLE histories (
-    id integer NOT NULL,
-    user_id integer,
-    historiable_id integer,
-    new_item boolean DEFAULT false,
-    historiable_type character varying(255),
-    history_data json DEFAULT '{}'::json,
-    created_at timestamp without time zone,
-    klass_type character varying(255),
-    extras public.hstore,
-    all_data json DEFAULT '{}'::json
-);
-
-
---
 -- Name: histories_id_seq; Type: SEQUENCE; Schema: biobolsas; Owner: -
 --
 
@@ -356,13 +296,6 @@ CREATE SEQUENCE histories_id_seq
     NO MINVALUE
     NO MAXVALUE
     CACHE 1;
-
-
---
--- Name: histories_id_seq; Type: SEQUENCE OWNED BY; Schema: biobolsas; Owner: -
---
-
-ALTER SEQUENCE histories_id_seq OWNED BY histories.id;
 
 
 --
@@ -1015,24 +948,6 @@ ALTER SEQUENCE contacts_id_seq OWNED BY contacts.id;
 
 
 --
--- Name: histories; Type: TABLE; Schema: bonsai; Owner: -
---
-
-CREATE TABLE histories (
-    id integer NOT NULL,
-    user_id integer,
-    historiable_id integer,
-    new_item boolean DEFAULT false,
-    historiable_type character varying(255),
-    history_data json DEFAULT '{}'::json,
-    created_at timestamp without time zone,
-    klass_type character varying(255),
-    extras public.hstore,
-    all_data json DEFAULT '{}'::json
-);
-
-
---
 -- Name: histories_id_seq; Type: SEQUENCE; Schema: bonsai; Owner: -
 --
 
@@ -1042,13 +957,6 @@ CREATE SEQUENCE histories_id_seq
     NO MINVALUE
     NO MAXVALUE
     CACHE 1;
-
-
---
--- Name: histories_id_seq; Type: SEQUENCE OWNED BY; Schema: bonsai; Owner: -
---
-
-ALTER SEQUENCE histories_id_seq OWNED BY histories.id;
 
 
 --
@@ -1881,24 +1789,6 @@ ALTER SEQUENCE contacts_id_seq OWNED BY contacts.id;
 
 
 --
--- Name: histories; Type: TABLE; Schema: demo; Owner: -
---
-
-CREATE TABLE histories (
-    id integer NOT NULL,
-    user_id integer,
-    historiable_id integer,
-    new_item boolean DEFAULT false,
-    historiable_type character varying(255),
-    history_data json DEFAULT '{}'::json,
-    created_at timestamp without time zone,
-    klass_type character varying(255),
-    extras public.hstore,
-    all_data json DEFAULT '{}'::json
-);
-
-
---
 -- Name: histories_id_seq; Type: SEQUENCE; Schema: demo; Owner: -
 --
 
@@ -1908,13 +1798,6 @@ CREATE SEQUENCE histories_id_seq
     NO MINVALUE
     NO MAXVALUE
     CACHE 1;
-
-
---
--- Name: histories_id_seq; Type: SEQUENCE OWNED BY; Schema: demo; Owner: -
---
-
-ALTER SEQUENCE histories_id_seq OWNED BY histories.id;
 
 
 --
@@ -2703,24 +2586,6 @@ ALTER SEQUENCE contacts_id_seq OWNED BY contacts.id;
 
 
 --
--- Name: histories; Type: TABLE; Schema: flor; Owner: -
---
-
-CREATE TABLE histories (
-    id integer NOT NULL,
-    user_id integer,
-    historiable_id integer,
-    new_item boolean DEFAULT false,
-    historiable_type character varying(255),
-    history_data json DEFAULT '{}'::json,
-    created_at timestamp without time zone,
-    klass_type character varying(255),
-    extras public.hstore,
-    all_data json DEFAULT '{}'::json
-);
-
-
---
 -- Name: histories_id_seq; Type: SEQUENCE; Schema: flor; Owner: -
 --
 
@@ -2730,13 +2595,6 @@ CREATE SEQUENCE histories_id_seq
     NO MINVALUE
     NO MAXVALUE
     CACHE 1;
-
-
---
--- Name: histories_id_seq; Type: SEQUENCE OWNED BY; Schema: flor; Owner: -
---
-
-ALTER SEQUENCE histories_id_seq OWNED BY histories.id;
 
 
 --
@@ -3525,24 +3383,6 @@ ALTER SEQUENCE contacts_id_seq OWNED BY contacts.id;
 
 
 --
--- Name: histories; Type: TABLE; Schema: public; Owner: -
---
-
-CREATE TABLE histories (
-    id integer NOT NULL,
-    user_id integer,
-    historiable_id integer,
-    new_item boolean DEFAULT false,
-    historiable_type character varying(255),
-    history_data json DEFAULT '{}'::json,
-    created_at timestamp without time zone,
-    klass_type character varying(255),
-    extras hstore,
-    all_data json DEFAULT '{}'::json
-);
-
-
---
 -- Name: histories_id_seq; Type: SEQUENCE; Schema: public; Owner: -
 --
 
@@ -3552,13 +3392,6 @@ CREATE SEQUENCE histories_id_seq
     NO MINVALUE
     NO MAXVALUE
     CACHE 1;
-
-
---
--- Name: histories_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: -
---
-
-ALTER SEQUENCE histories_id_seq OWNED BY histories.id;
 
 
 --
@@ -3764,34 +3597,6 @@ ALTER SEQUENCE movement_details_id_seq OWNED BY movement_details.id;
 
 
 --
--- Name: organisations; Type: TABLE; Schema: public; Owner: -
---
-
-CREATE TABLE organisations (
-    id integer NOT NULL,
-    country_id integer,
-    name character varying(100),
-    address character varying(255),
-    address_alt character varying(255),
-    phone character varying(40),
-    phone_alt character varying(40),
-    mobile character varying(40),
-    email character varying(255),
-    website character varying(255),
-    user_id integer,
-    due_date date,
-    preferences text,
-    time_zone character varying(100),
-    tenant character varying(50),
-    currency character varying(10),
-    created_at timestamp without time zone NOT NULL,
-    updated_at timestamp without time zone NOT NULL,
-    country_code character varying(5),
-    settings hstore DEFAULT '"inventory"=>"true"'::hstore
-);
-
-
---
 -- Name: organizations_id_seq; Type: SEQUENCE; Schema: public; Owner: -
 --
 
@@ -3801,13 +3606,6 @@ CREATE SEQUENCE organizations_id_seq
     NO MINVALUE
     NO MAXVALUE
     CACHE 1;
-
-
---
--- Name: organizations_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: -
---
-
-ALTER SEQUENCE organizations_id_seq OWNED BY organisations.id;
 
 
 --
@@ -4216,13 +4014,6 @@ ALTER TABLE ONLY contacts ALTER COLUMN id SET DEFAULT nextval('contacts_id_seq':
 -- Name: id; Type: DEFAULT; Schema: biobolsas; Owner: -
 --
 
-ALTER TABLE ONLY histories ALTER COLUMN id SET DEFAULT nextval('histories_id_seq'::regclass);
-
-
---
--- Name: id; Type: DEFAULT; Schema: biobolsas; Owner: -
---
-
 ALTER TABLE ONLY inventories ALTER COLUMN id SET DEFAULT nextval('inventories_id_seq'::regclass);
 
 
@@ -4331,13 +4122,6 @@ ALTER TABLE ONLY attachments ALTER COLUMN id SET DEFAULT nextval('attachments_id
 --
 
 ALTER TABLE ONLY contacts ALTER COLUMN id SET DEFAULT nextval('contacts_id_seq'::regclass);
-
-
---
--- Name: id; Type: DEFAULT; Schema: bonsai; Owner: -
---
-
-ALTER TABLE ONLY histories ALTER COLUMN id SET DEFAULT nextval('histories_id_seq'::regclass);
 
 
 --
@@ -4488,13 +4272,6 @@ ALTER TABLE ONLY contacts ALTER COLUMN id SET DEFAULT nextval('contacts_id_seq':
 -- Name: id; Type: DEFAULT; Schema: demo; Owner: -
 --
 
-ALTER TABLE ONLY histories ALTER COLUMN id SET DEFAULT nextval('histories_id_seq'::regclass);
-
-
---
--- Name: id; Type: DEFAULT; Schema: demo; Owner: -
---
-
 ALTER TABLE ONLY inventories ALTER COLUMN id SET DEFAULT nextval('inventories_id_seq'::regclass);
 
 
@@ -4624,13 +4401,6 @@ ALTER TABLE ONLY attachments ALTER COLUMN id SET DEFAULT nextval('attachments_id
 --
 
 ALTER TABLE ONLY contacts ALTER COLUMN id SET DEFAULT nextval('contacts_id_seq'::regclass);
-
-
---
--- Name: id; Type: DEFAULT; Schema: flor; Owner: -
---
-
-ALTER TABLE ONLY histories ALTER COLUMN id SET DEFAULT nextval('histories_id_seq'::regclass);
 
 
 --
@@ -4772,13 +4542,6 @@ ALTER TABLE ONLY contacts ALTER COLUMN id SET DEFAULT nextval('contacts_id_seq':
 -- Name: id; Type: DEFAULT; Schema: public; Owner: -
 --
 
-ALTER TABLE ONLY histories ALTER COLUMN id SET DEFAULT nextval('histories_id_seq'::regclass);
-
-
---
--- Name: id; Type: DEFAULT; Schema: public; Owner: -
---
-
 ALTER TABLE ONLY inventories ALTER COLUMN id SET DEFAULT nextval('inventories_id_seq'::regclass);
 
 
@@ -4808,13 +4571,6 @@ ALTER TABLE ONLY links ALTER COLUMN id SET DEFAULT nextval('links_id_seq'::regcl
 --
 
 ALTER TABLE ONLY movement_details ALTER COLUMN id SET DEFAULT nextval('movement_details_id_seq'::regclass);
-
-
---
--- Name: id; Type: DEFAULT; Schema: public; Owner: -
---
-
-ALTER TABLE ONLY organisations ALTER COLUMN id SET DEFAULT nextval('organizations_id_seq'::regclass);
 
 
 --
@@ -4919,14 +4675,6 @@ ALTER TABLE ONLY attachments
 
 ALTER TABLE ONLY contacts
     ADD CONSTRAINT contacts_pkey PRIMARY KEY (id);
-
-
---
--- Name: histories_pkey; Type: CONSTRAINT; Schema: biobolsas; Owner: -
---
-
-ALTER TABLE ONLY histories
-    ADD CONSTRAINT histories_pkey PRIMARY KEY (id);
 
 
 --
@@ -5057,14 +4805,6 @@ ALTER TABLE ONLY attachments
 
 ALTER TABLE ONLY contacts
     ADD CONSTRAINT contacts_pkey PRIMARY KEY (id);
-
-
---
--- Name: histories_pkey; Type: CONSTRAINT; Schema: bonsai; Owner: -
---
-
-ALTER TABLE ONLY histories
-    ADD CONSTRAINT histories_pkey PRIMARY KEY (id);
 
 
 --
@@ -5232,14 +4972,6 @@ ALTER TABLE ONLY contacts
 
 
 --
--- Name: histories_pkey; Type: CONSTRAINT; Schema: demo; Owner: -
---
-
-ALTER TABLE ONLY histories
-    ADD CONSTRAINT histories_pkey PRIMARY KEY (id);
-
-
---
 -- Name: inventory_operation_details_pkey; Type: CONSTRAINT; Schema: demo; Owner: -
 --
 
@@ -5391,14 +5123,6 @@ ALTER TABLE ONLY attachments
 
 ALTER TABLE ONLY contacts
     ADD CONSTRAINT contacts_pkey PRIMARY KEY (id);
-
-
---
--- Name: histories_pkey; Type: CONSTRAINT; Schema: flor; Owner: -
---
-
-ALTER TABLE ONLY histories
-    ADD CONSTRAINT histories_pkey PRIMARY KEY (id);
 
 
 --
@@ -5556,14 +5280,6 @@ ALTER TABLE ONLY contacts
 
 
 --
--- Name: histories_pkey; Type: CONSTRAINT; Schema: public; Owner: -
---
-
-ALTER TABLE ONLY histories
-    ADD CONSTRAINT histories_pkey PRIMARY KEY (id);
-
-
---
 -- Name: inventory_operation_details_pkey; Type: CONSTRAINT; Schema: public; Owner: -
 --
 
@@ -5593,14 +5309,6 @@ ALTER TABLE ONLY items
 
 ALTER TABLE ONLY links
     ADD CONSTRAINT links_pkey PRIMARY KEY (id);
-
-
---
--- Name: organizations_pkey; Type: CONSTRAINT; Schema: public; Owner: -
---
-
-ALTER TABLE ONLY organisations
-    ADD CONSTRAINT organizations_pkey PRIMARY KEY (id);
 
 
 --
@@ -5757,13 +5465,6 @@ CREATE INDEX index_account_ledgers_on_project_id ON account_ledgers USING btree 
 
 
 --
--- Name: index_account_ledgers_on_reference; Type: INDEX; Schema: biobolsas; Owner: -
---
-
-CREATE INDEX index_account_ledgers_on_reference ON account_ledgers USING gin (reference public.gin_trgm_ops);
-
-
---
 -- Name: index_account_ledgers_on_status; Type: INDEX; Schema: biobolsas; Owner: -
 --
 
@@ -5824,13 +5525,6 @@ CREATE INDEX index_accounts_on_currency ON accounts USING btree (currency);
 --
 
 CREATE INDEX index_accounts_on_date ON accounts USING btree (date);
-
-
---
--- Name: index_accounts_on_description; Type: INDEX; Schema: biobolsas; Owner: -
---
-
-CREATE INDEX index_accounts_on_description ON accounts USING gin (description public.gin_trgm_ops);
 
 
 --
@@ -6013,27 +5707,6 @@ CREATE INDEX index_contacts_on_supplier ON contacts USING btree (supplier);
 --
 
 CREATE INDEX index_contacts_on_tag_ids ON contacts USING gin (tag_ids);
-
-
---
--- Name: index_histories_on_created_at; Type: INDEX; Schema: biobolsas; Owner: -
---
-
-CREATE INDEX index_histories_on_created_at ON histories USING btree (created_at);
-
-
---
--- Name: index_histories_on_historiable_id_and_historiable_type; Type: INDEX; Schema: biobolsas; Owner: -
---
-
-CREATE INDEX index_histories_on_historiable_id_and_historiable_type ON histories USING btree (historiable_id, historiable_type);
-
-
---
--- Name: index_histories_on_user_id; Type: INDEX; Schema: biobolsas; Owner: -
---
-
-CREATE INDEX index_histories_on_user_id ON histories USING btree (user_id);
 
 
 --
@@ -6333,13 +6006,6 @@ CREATE INDEX index_account_ledgers_on_project_id ON account_ledgers USING btree 
 
 
 --
--- Name: index_account_ledgers_on_reference; Type: INDEX; Schema: bonsai; Owner: -
---
-
-CREATE INDEX index_account_ledgers_on_reference ON account_ledgers USING gin (reference public.gin_trgm_ops);
-
-
---
 -- Name: index_account_ledgers_on_status; Type: INDEX; Schema: bonsai; Owner: -
 --
 
@@ -6400,13 +6066,6 @@ CREATE INDEX index_accounts_on_currency ON accounts USING btree (currency);
 --
 
 CREATE INDEX index_accounts_on_date ON accounts USING btree (date);
-
-
---
--- Name: index_accounts_on_description; Type: INDEX; Schema: bonsai; Owner: -
---
-
-CREATE INDEX index_accounts_on_description ON accounts USING gin (description public.gin_trgm_ops);
 
 
 --
@@ -6589,27 +6248,6 @@ CREATE INDEX index_contacts_on_supplier ON contacts USING btree (supplier);
 --
 
 CREATE INDEX index_contacts_on_tag_ids ON contacts USING gin (tag_ids);
-
-
---
--- Name: index_histories_on_created_at; Type: INDEX; Schema: bonsai; Owner: -
---
-
-CREATE INDEX index_histories_on_created_at ON histories USING btree (created_at);
-
-
---
--- Name: index_histories_on_historiable_id_and_historiable_type; Type: INDEX; Schema: bonsai; Owner: -
---
-
-CREATE INDEX index_histories_on_historiable_id_and_historiable_type ON histories USING btree (historiable_id, historiable_type);
-
-
---
--- Name: index_histories_on_user_id; Type: INDEX; Schema: bonsai; Owner: -
---
-
-CREATE INDEX index_histories_on_user_id ON histories USING btree (user_id);
 
 
 --
@@ -7023,13 +6661,6 @@ CREATE INDEX index_account_ledgers_on_project_id ON account_ledgers USING btree 
 
 
 --
--- Name: index_account_ledgers_on_reference; Type: INDEX; Schema: demo; Owner: -
---
-
-CREATE INDEX index_account_ledgers_on_reference ON account_ledgers USING gin (reference public.gin_trgm_ops);
-
-
---
 -- Name: index_account_ledgers_on_status; Type: INDEX; Schema: demo; Owner: -
 --
 
@@ -7090,13 +6721,6 @@ CREATE INDEX index_accounts_on_currency ON accounts USING btree (currency);
 --
 
 CREATE INDEX index_accounts_on_date ON accounts USING btree (date);
-
-
---
--- Name: index_accounts_on_description; Type: INDEX; Schema: demo; Owner: -
---
-
-CREATE INDEX index_accounts_on_description ON accounts USING gin (description public.gin_trgm_ops);
 
 
 --
@@ -7279,27 +6903,6 @@ CREATE INDEX index_contacts_on_supplier ON contacts USING btree (supplier);
 --
 
 CREATE INDEX index_contacts_on_tag_ids ON contacts USING gin (tag_ids);
-
-
---
--- Name: index_histories_on_created_at; Type: INDEX; Schema: demo; Owner: -
---
-
-CREATE INDEX index_histories_on_created_at ON histories USING btree (created_at);
-
-
---
--- Name: index_histories_on_historiable_id_and_historiable_type; Type: INDEX; Schema: demo; Owner: -
---
-
-CREATE INDEX index_histories_on_historiable_id_and_historiable_type ON histories USING btree (historiable_id, historiable_type);
-
-
---
--- Name: index_histories_on_user_id; Type: INDEX; Schema: demo; Owner: -
---
-
-CREATE INDEX index_histories_on_user_id ON histories USING btree (user_id);
 
 
 --
@@ -7690,13 +7293,6 @@ CREATE INDEX index_account_ledgers_on_project_id ON account_ledgers USING btree 
 
 
 --
--- Name: index_account_ledgers_on_reference; Type: INDEX; Schema: flor; Owner: -
---
-
-CREATE INDEX index_account_ledgers_on_reference ON account_ledgers USING gin (reference public.gin_trgm_ops);
-
-
---
 -- Name: index_account_ledgers_on_status; Type: INDEX; Schema: flor; Owner: -
 --
 
@@ -7757,13 +7353,6 @@ CREATE INDEX index_accounts_on_currency ON accounts USING btree (currency);
 --
 
 CREATE INDEX index_accounts_on_date ON accounts USING btree (date);
-
-
---
--- Name: index_accounts_on_description; Type: INDEX; Schema: flor; Owner: -
---
-
-CREATE INDEX index_accounts_on_description ON accounts USING gin (description public.gin_trgm_ops);
 
 
 --
@@ -7946,27 +7535,6 @@ CREATE INDEX index_contacts_on_supplier ON contacts USING btree (supplier);
 --
 
 CREATE INDEX index_contacts_on_tag_ids ON contacts USING gin (tag_ids);
-
-
---
--- Name: index_histories_on_created_at; Type: INDEX; Schema: flor; Owner: -
---
-
-CREATE INDEX index_histories_on_created_at ON histories USING btree (created_at);
-
-
---
--- Name: index_histories_on_historiable_id_and_historiable_type; Type: INDEX; Schema: flor; Owner: -
---
-
-CREATE INDEX index_histories_on_historiable_id_and_historiable_type ON histories USING btree (historiable_id, historiable_type);
-
-
---
--- Name: index_histories_on_user_id; Type: INDEX; Schema: flor; Owner: -
---
-
-CREATE INDEX index_histories_on_user_id ON histories USING btree (user_id);
 
 
 --
@@ -8357,13 +7925,6 @@ CREATE INDEX index_account_ledgers_on_project_id ON account_ledgers USING btree 
 
 
 --
--- Name: index_account_ledgers_on_reference; Type: INDEX; Schema: public; Owner: -
---
-
-CREATE INDEX index_account_ledgers_on_reference ON account_ledgers USING gin (reference gin_trgm_ops);
-
-
---
 -- Name: index_account_ledgers_on_status; Type: INDEX; Schema: public; Owner: -
 --
 
@@ -8424,13 +7985,6 @@ CREATE INDEX index_accounts_on_currency ON accounts USING btree (currency);
 --
 
 CREATE INDEX index_accounts_on_date ON accounts USING btree (date);
-
-
---
--- Name: index_accounts_on_description; Type: INDEX; Schema: public; Owner: -
---
-
-CREATE INDEX index_accounts_on_description ON accounts USING gin (description gin_trgm_ops);
 
 
 --
@@ -8616,27 +8170,6 @@ CREATE INDEX index_contacts_on_tag_ids ON contacts USING gin (tag_ids);
 
 
 --
--- Name: index_histories_on_created_at; Type: INDEX; Schema: public; Owner: -
---
-
-CREATE INDEX index_histories_on_created_at ON histories USING btree (created_at);
-
-
---
--- Name: index_histories_on_historiable_id_and_historiable_type; Type: INDEX; Schema: public; Owner: -
---
-
-CREATE INDEX index_histories_on_historiable_id_and_historiable_type ON histories USING btree (historiable_id, historiable_type);
-
-
---
--- Name: index_histories_on_user_id; Type: INDEX; Schema: public; Owner: -
---
-
-CREATE INDEX index_histories_on_user_id ON histories USING btree (user_id);
-
-
---
 -- Name: index_inventories_on_updater_id; Type: INDEX; Schema: public; Owner: -
 --
 
@@ -8819,41 +8352,6 @@ CREATE INDEX index_movement_details_on_item_id ON movement_details USING btree (
 
 
 --
--- Name: index_organizations_on_country_code; Type: INDEX; Schema: public; Owner: -
---
-
-CREATE INDEX index_organizations_on_country_code ON organisations USING btree (country_code);
-
-
---
--- Name: index_organizations_on_country_id; Type: INDEX; Schema: public; Owner: -
---
-
-CREATE INDEX index_organizations_on_country_id ON organisations USING btree (country_id);
-
-
---
--- Name: index_organizations_on_currency; Type: INDEX; Schema: public; Owner: -
---
-
-CREATE INDEX index_organizations_on_currency ON organisations USING btree (currency);
-
-
---
--- Name: index_organizations_on_due_date; Type: INDEX; Schema: public; Owner: -
---
-
-CREATE INDEX index_organizations_on_due_date ON organisations USING btree (due_date);
-
-
---
--- Name: index_organizations_on_tenant; Type: INDEX; Schema: public; Owner: -
---
-
-CREATE UNIQUE INDEX index_organizations_on_tenant ON organisations USING btree (tenant);
-
-
---
 -- Name: index_projects_on_active; Type: INDEX; Schema: public; Owner: -
 --
 
@@ -8983,7 +8481,7 @@ CREATE UNIQUE INDEX unique_schema_migrations ON schema_migrations USING btree (v
 -- PostgreSQL database dump complete
 --
 
-SET search_path TO public;
+SET search_path TO "$user", public;
 
 INSERT INTO public.schema_migrations (version) VALUES ('20100101101010');
 
