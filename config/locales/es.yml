@@ -224,7 +224,7 @@ es:
         approved: 'Ya esta aprobado'
         nulled: 'Ya esta anulado'
       contact:
-        matchcode: "El idenificador ya existe, por favor cambie"
+        matchcode: "El identificador ya existe, por favor cambie"
       devolution:
         movement_total: "La cantidad y el balance suman un valor mayor al total"
       expense:
@@ -254,7 +254,7 @@ es:
         empty_items: "No existe items para realizar la operación"
         item_balance: "Existen items que exeden el máximo permitido"
         stock_quantity: "Existen items que exceden la cantidad máxima"
-        negative_stock: "Hay ítems que generaton un stock negactivo"
+        negative_stock: "Hay ítems que generaron un stock negativo"
         movement_quantity: "La cantidad es mayor a la permitida de %{q}"
         at_least_one_item: "Debe existir al menos un item con cantidad mayor a 0"
       item:
@@ -268,8 +268,7 @@ es:
         unconcilied_ledgers: "Existen transacciones pendientes de revisión"
         changes: "No es posible cambiar el número de referencia o el contacto"
         paid_amount: "El total es menor a la cantidad %{pay_type}, le recomendamos realizar una devolución"
-        number_of_items: "Debe ingresar seleccionar al menos un ítem"
-        number_of_items: "Debe ingresar seleccionar al menos un ítemon"
+        number_of_items: "Debe seleccionar al menos un ítem"
         currency_change: "No es posible cambiar la moneda, se realizaron operaciones"
         greater_due_date: "La fecha de vencimiento debe ser mayor o igual que la fecha"
       payment:
@@ -283,7 +282,7 @@ es:
         valid_accounts_currency: "Alguna de las cuentas debe ser en %{currency}"
         total: "El valor total es incorrecto"
       quick_income:
-        valid_account_to: "Debe seleccionar una cuenta Banco o Caja"
+        valid_account_to: "Debe seleccionar una cuenta Banco o caja"
       store:
         destroy: 'No es posible borrar debido a que tiene operaciones'
         selected: 'Usted ha seleccionado un alamcen invalido.'
@@ -293,18 +292,18 @@ es:
         password_confirmation: "La contraseña y la confirmación de contraseña no son iguales"
         wrong_password: "La contraseña que ingreso es incorrecta"
         user_limit: "Su empresa ha llegado a su limite en el número de usuarios"
-        email_not_found: "El email que ingreso no existe"
+        email_not_found: "El email que ingresó no existe"
         link_found: 'El usuario ya existe en su empresa activelo.'
       movement_details:
         not_destroy: "para eliminar este ítem realize una devolución de inventario"
         item_changed: "No es posible cambiar de item, se volvio al original"
         destroy: "No se puede borrar el item"
       income_details:
-        balance: "La cantida es menor a la cantidad entregada"
+        balance: "La cantidad es menor a la cantidad entregada"
       repeated_items: "Existen items repetidos, por favor revise"
       repeated_item: "El ítem seleccionado esta repetido"
       registration:
-        unique_tenant: 'El subdominio que eligio ya existe'
+        unique_tenant: 'El subdominio que eligió ya existe'
 
   # Active Support
   date:
