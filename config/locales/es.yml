@@ -518,11 +518,11 @@ es:
         search_placeholder: "Buscar por contacto o referencia"
         search_button: "Buscar"
       show:
-        ledger_in_button: "Aumentar prestamo"
+        ledger_in_button: "Aumentar préstamo"
 
     loan_ledger_ins:
       new_give:
-        title: "Aumentar prestamo"
+        title: "Aumentar préstamo"
 
     loan_payments:
       form:
@@ -541,9 +541,9 @@ es:
   presenters:
     loans:
       receive:
-        ledger_ins_title: "Ingreso de prestamos"
+        ledger_ins_title: "Ingreso de préstamos"
       give:
-        ledger_ins_title: "Egreso de prestamos"
+        ledger_ins_title: "Egreso de préstamos"
     inventory:
       title:
         deliver: "Entrega"

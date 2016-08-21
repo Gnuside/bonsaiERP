@@ -406,52 +406,52 @@ en:
   # Translations for history
   item:
     attributes:
-      for_sale: Venta
-      active: Visible
-      unit_id: Unidad
-      price: Precio de VENTA
-      buy_price: Precio de COMPRA
-      name: Nombre
-      code: Código
+      for_sale: "For sale"
+      active: "Visible"
+      unit_id: "Unit id"
+      price: "Reselling price"
+      buy_price: "Buying price"
+      name: "Name"
+      code: "Code"
 
   movement_attributes: &movement_attributes
-    name: 'código'
-    state: 'estado'
-    amount: 'saldo'
+    name: 'code'
+    state: 'state'
+    amount: 'amount'
     total: 'total'
-    date: 'fecha'
-    due_date: 'fecha de vencimiento'
-    currency: 'moneda'
-    exchange_rate: 'tipo de cambio'
-    tax_id: 'impuesto'
-    description: 'descripción'
-    inventory: 'Inventario'
-    tax_in_out: 'Impuesto por dentro'
-    tax_percentage: 'Porcentaje impuesto'
+    date: 'date'
+    due_date: 'due date'
+    currency: 'currency'
+    exchange_rate: 'exchange rate'
+    tax_id: 'tax'
+    description: 'description'
+    inventory: 'Inventory'
+    tax_in_out: 'Tax inside'
+    tax_percentage: 'Tax percentage'
 
   income:
     paid: Charged
     attributes:
       <<: *movement_attributes
     payment:
-      reference: "Cobro ingreso %{income}"
+      reference: "Income collection %{income}"
     batch_payment:
-      reference: "Cobro ingreso %{income}"
+      reference: "Income collection %{income}"
 
   expense:
     paid: Paid
-    account_ledger_reference: "Gasto"
+    account_ledger_reference: "Expense"
     payment:
-      reference: "Pago egreso %{expense}"
+      reference: "Payment outflow %{expense}"
     attributes:
       <<: *movement_attributes
 
   loan_attributes: &loan_attributes
-    date: fecha
-    due_date: vence el
-    amount: saldo
+    date: date
+    due_date: "due date"
+    amount: amount
     total: total
-    interests: intereses
+    interests: interests
 
   loans:
     give:
@@ -462,103 +462,103 @@ en:
         <<: *loan_attributes
 
   account_ledger:
-    payment_description: "%{pay_type} de %{trans} %{ref}, cuenta %{account}"
-    initial_money: "Saldo inicial"
-    devolution_description: "Devolución %{trans}, cuenta %{account}"
+    payment_description: "%{pay_type} of %{trans} %{ref}, account %{account}"
+    initial_money: "initial money"
+    devolution_description: "Refund %{trans}, account %{account}"
   currency:
     exchange_rate:
-      "tipo de cambio de ( %{cur1} = %{cur2} )"
+      "exchange rate ( %{cur1} = %{cur2} )"
   contact:
-    client: "Cliente"
-    supplier: "Proveedor"
-    staff: "Personal"
+    client: "Customer"
+    supplier: "Supplier"
+    staff: "Staff"
   organisation:
     errors:
       tenant:
-        list: "Debe seleccionar otro valor"
+        list: "Please select an other value"
   history:
-    new_record: Creado por %{user}
+    new_record: Creation of %{user}
   ################################################################
   # Controllers
   controllers:
     movements:
       index:
         search: &search_movements_form
-          contact_expense: "Buscar por contacto o egreso"
-          date_start: "Fecha inicio"
-          date_end: "Fecha fin"
-          state: "Estado"
+          contact_expense: "Search for a contact or an expense"
+          date_start: "Start date"
+          date_end: "End date"
+          state: "State"
 
     expenses:
-      reference: "Cobro egreso %{name}"
+      reference: "Expense collection %{name}"
       index:
         search:
-          contact_expense: "Buscar por contacto o egreso"
-          date_start: "Fecha inicio"
-          date_end: "Fecha fin"
-          state: "Estado"
+          contact_expense: "Search for a contact or an expense"
+          date_start: "Start date"
+          date_end: "End date"
+          state: "State"
 
 
     incomes:
-      reference: "Cobro ingreso %{name}"
+      reference: "Income collection %{name}"
       index:
         batch_payment:
-          title: "Cobro multiple"
+          title: "Multiple collection"
         search:
-          contact_income: "Buscar por contacto o ingreso"
-          date_start: "Fecha inicio"
-          date_end: "Fecha fin"
-          state: "Estado"
+          contact_income: "Search for a contact or an income"
+          date_start: "Start date"
+          date_end: "End date"
+          state: "State"
 
     loans:
       index:
-        all: "Todos"
-        given: "Otorgados"
-        received: "Recibidos"
-        search_placeholder: "Buscar por contacto o referencia"
-        search_button: "Buscar"
+        all: "All"
+        given: "Given"
+        received: "Received"
+        search_placeholder: "Search for contact or loan"
+        search_button: "Search"
       show:
-        ledger_in_button: "Aumentar prestamo"
+        ledger_in_button: "Increasing loan"
 
     loan_ledger_ins:
       new_give:
-        title: "Aumentar prestamo"
+        title: "Increasing loan"
 
     loan_payments:
       form:
-        amount: "Catidad"
-        exchange_rate: "Tipo de cambio"
+        amount: "Quantity"
+        exchange_rate: "Exchange rate"
         total: "TOTAL"
-        date: "Fecha"
-        verify_bank: "Verificar (solo bank)"
-        verify_bank_hint: "Verificar a futuro. Ej.: (Cheque)"
-        reference: "Referencia"
+        date: "Date"
+        verify_bank: "Verify bank"
+        verify_bank_hint: "Verify futur income: (Cheque)"
+        reference: "Reference"
 
     registrations:
-      create_notice: "Ha creado correctamente su empresa"
+      create_notice: "You have successfully created your company"
   ################################################################
   # Presenters
   presenters:
     loans:
       receive:
-        ledger_ins_title: "Ingreso de prestamos"
+        ledger_ins_title: "Income loans"
       give:
-        ledger_ins_title: "Egreso de prestamos"
+        ledger_ins_title: "Exit loans"
     inventory:
       title:
-        deliver: "Entrega"
-        devolution: "Devolución"
-        pick: "Recojo"
-        in: "Ingreso"
-        out: "Egreso"
+        deliver: "Delivery"
+        devolution: "Return"
+        pick: "Pick up"
+        in: "Income"
+        out: "Exit"
       contact_tooltip:
-        client: "Cliente"
-        supplier: "Proveedor"
+        client: "Client"
+        supplier: "Supplier"
       related_tip:
-        income: "Ingreso"
-        expense: "Egreso"
-        store_destiny: "Almacen destino"
-        store_source: "Almacen origen"
+        income: "Income"
+        expense: "Expense"
+        store_destiny: "Store destination"
+        store_source: "Store of origin"
       transaction_tooltip:
-        sale: "Venta"
-        buy: "Compra"
+        sale: "Sale"
+        buy: "Buy"
