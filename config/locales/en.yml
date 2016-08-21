@@ -340,37 +340,37 @@ en:
   support:
     array:
       words_connector: ", "
-      two_words_connector: " y "
-      last_word_connector: ", y "
+      two_words_connector: " and "
+      last_word_connector: " and "
     select:
-      prompt: "Por favor seleccione"
+      prompt: "Please select"
 
   simple_form:
-    "yes": "Si"
+    "yes": "Yes"
     "no": "No"
     required:
-      text: "requerido"
+      text: "required"
       mark: "*"
 
   common:
-    new: 'Nuevo'
-    edit: 'Editar'
-    delete: 'Borrar'
-    show: 'Ver'
-    search: "Buscar"
+    new: 'New'
+    edit: 'Edit'
+    delete: 'Delete'
+    show: 'Show'
+    search: "Search"
 
   email:
-    invoice_title: "Nota de venta "
-    invoice_body: "Estimado cliente le hacemos llegar el adjunto de la venta"
+    invoice_title: "Invoice "
+    invoice_body: "Dear customer, you will find attached the invoice corresponding to you purchase"
     registration:
-      send: "Completa tu registro %{email} en %{app_name}"
-      user: "Bienvenido a %{app_name}, usted ha sido adicionado como usuario en %{company}"
+      send: "Complete your registration of %{email} for %{app_name}"
+      user: "Welcome to %{app_name}, you have been added to the users of %{company}"
     reset_password:
-      subject: "Recuperar contraseña de %{app_name}"
+      subject: "Password recovery for %{app_name}"
 
   bonsai:
-    registration: "Complete su registro en %{domain}"
-    autocomplete_placeholder: "Comience a escribir para autocompletar"
+    registration: "Complete your registration in %{domain}"
+    autocomplete_placeholder: "Start writing for autocompletion"
 
   views:
     pagination:
